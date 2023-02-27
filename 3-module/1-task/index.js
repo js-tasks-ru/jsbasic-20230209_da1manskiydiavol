@@ -1,7 +1,4 @@
 function namify(users) {
-  names = [];
-  for (let i = 0; i < users.length; i++) {
-    names.push(users[i].name);
-  }
+  let names = users.map(item => item.name);
   return names;
 }

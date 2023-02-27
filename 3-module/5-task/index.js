@@ -1,16 +1,12 @@
 function getMinMax(str) {
-  let _tmpArr = str.split(' ');
-  let _min = 0;
-  let _max = 0;
-
-  for (item of _tmpArr) {
-    item = Number.parseFloat(item);
-    if (_min > item) _min = item;
-    if (_max < item) _max = item;
-  }
+  let _arr = str.split(' ').map(function(item) {
+    if (Number.parseFloat(item)) return item;
+    else return '*';
+  });
+  let arr = _arr.join('').split('*');
 
   return {
-    min: _min,
-    max: _max,
+    min: arr.reduce((a, b) => Math.min(a, b), 0),
+    max: arr.reduce((a, b) => Math.max(a, b), 0),
   };
 }
